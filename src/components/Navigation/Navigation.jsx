@@ -1,26 +1,17 @@
 import { Nav } from "./Navigation.styled";
 
-import { Link, NavLink } from "react-router-dom";
+import Logo from "../Logo/Logo";
+import AuthNav from "../AuthNav/AuthNav";
 
 const Navigation = () => {
   return (
-    <Nav>
-      <Link
-        to="/"
-        style={{
-          textDecoration: "none",
-          fontSize: "4rem",
-          textShadow: "5px 5px #00000066",
-          color: "#ff8604",
-          fontFamily: '"Kalam", cursive',
-        }}
-      >
-        TRIVIA
-      </Link>
+    <header>
+      <Nav>
+        <Logo />
 
-      <NavLink to="/register">Register</NavLink>
-      <NavLink to="/login">Log in</NavLink>
-    </Nav>
+        <AuthNav />
+      </Nav>
+    </header>
   );
 };
 
