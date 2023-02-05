@@ -3,6 +3,7 @@ import { Routes, Route } from "react-router-dom";
 import SharedLayout from "./SharedLayout/SharedLayout";
 import Register from "../pages/Register";
 import LogIn from "../pages/LogIn";
+import Home from "../pages/Home";
 import img from "../images/quiz.png";
 
 function App() {
@@ -17,7 +18,7 @@ function App() {
     >
       <Routes>
         <Route path="/" element={<SharedLayout />}>
-          <Route index />
+          <Route index element={<Home />} />
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<LogIn />} />
         </Route>

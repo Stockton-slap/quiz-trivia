@@ -5,35 +5,11 @@ import {
   FormLabel,
   FormValue,
   FormBtn,
-} from "./RegForm.styled";
+  Error,
+} from "../sharedStyles/sharedFormStyles.styled";
 
+import validate from "../baseFunc";
 import { useFormik } from "formik";
-
-const validate = (values) => {
-  const errors = {};
-
-  if (!values.username) {
-    errors.username = "Required";
-  } else if (values.username.length > 15 || values.username.length < 6) {
-    errors.username = "Must be not more than 15 and not less than 6 characters";
-  }
-
-  if (!values.email) {
-    errors.email = "Required";
-  } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
-    errors.email = "Invalid email address";
-  }
-
-  if (!values.password) {
-    errors.password = "Required";
-  } else if (values.password.length < 6) {
-    errors.password = "Must be 6 characters or more";
-  }
-
-  return errors;
-};
-
-// ------------------------------------------------------------------------------------------------------------------------------------------------------>
 
 const RegForm = () => {
   const formik = useFormik({
@@ -54,6 +30,9 @@ const RegForm = () => {
 
       <InfoWrapper>
         <FormLabel htmlFor="username">Username</FormLabel>
+        {formik.touched.username ? (
+          <Error>{formik.errors.username}</Error>
+        ) : null}
         <FormValue
           id="username"
           name="username"
@@ -61,8 +40,8 @@ const RegForm = () => {
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
           value={formik.values.username}
+          placeholder="Enter your username"
         />
-        {formik.touched.username ? <div>{formik.errors.username}</div> : null}
 
         <FormLabel htmlFor="password">Password</FormLabel>
         <FormValue
@@ -72,8 +51,11 @@ const RegForm = () => {
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
           value={formik.values.password}
+          placeholder="Enter your password"
         />
-        {formik.touched.password ? <div>{formik.errors.password}</div> : null}
+        {formik.touched.password ? (
+          <Error>{formik.errors.password}</Error>
+        ) : null}
 
         <FormLabel htmlFor="email">Email Address</FormLabel>
         <FormValue
@@ -83,10 +65,11 @@ const RegForm = () => {
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
           value={formik.values.email}
+          placeholder="Enter your email address"
         />
-        {formik.touched.email ? <div>{formik.errors.email}</div> : null}
+        {formik.touched.email ? <Error>{formik.errors.email}</Error> : null}
 
-        <FormBtn type="submit">Submit</FormBtn>
+        <FormBtn type="submit">REGISTER</FormBtn>
       </InfoWrapper>
     </FormContainer>
   );

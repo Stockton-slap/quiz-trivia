@@ -4,14 +4,12 @@ import React from "react";
 const theme = {
   colors: {
     decorColor: "#ff8604",
-    formBorderColor: "#434040e6",
+    errorColor: "#fb0000",
+    inputBgc: "#eeecec",
+    mainTextColor: "#4e4e4e;",
   },
   decorFont: "'Kalam', cursive",
-  fontSizes: {
-    small: "1em",
-    medium: "2em",
-    large: "3em",
-  },
+  transition: "all 200ms ease-in-out 0s",
 };
 
 const Theme = ({ children }) => (

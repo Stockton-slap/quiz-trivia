@@ -4,7 +4,7 @@ const AuthNav = () => {
   return (
     <AuthNavWrapper>
       <StyledNavLink to="/register">Register</StyledNavLink>
-      <StyledNavLink to="/login">Log in</StyledNavLink>
+      <StyledNavLink to="/login">Login</StyledNavLink>
     </AuthNavWrapper>
   );
 };
