@@ -11,7 +11,12 @@ import {
 import validate from "../baseFunc";
 import { useFormik } from "formik";
 
+import { useDispatch } from "react-redux";
+import { register } from "../../redux/authOperations";
+
 const RegForm = () => {
+  const dispatch = useDispatch();
+
   const formik = useFormik({
     initialValues: {
       username: "",
@@ -20,7 +25,7 @@ const RegForm = () => {
     },
     validate,
     onSubmit: (values) => {
-      alert(JSON.stringify(values, null, 2));
+      dispatch(register(values));
     },
   });
 

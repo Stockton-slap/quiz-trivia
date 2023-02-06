@@ -5,6 +5,9 @@ import Register from "../pages/Register";
 import LogIn from "../pages/LogIn";
 import Home from "../pages/Home";
 import img from "../images/quiz.png";
+import PublicRoute from "./PublicRoute/PublicRoute";
+import PrivateRoute from "./PrivateRoute/PrivateRoute";
+import QuizPage from "./QuizPage/QuizPage";
 
 function App() {
   return (
@@ -18,9 +21,39 @@ function App() {
     >
       <Routes>
         <Route path="/" element={<SharedLayout />}>
-          <Route index element={<Home />} />
-          <Route path="/register" element={<Register />} />
-          <Route path="/login" element={<LogIn />} />
+          <Route
+            index
+            element={
+              <PublicRoute>
+                <Home />
+              </PublicRoute>
+            }
+          />
+
+          <Route
+            path="/register"
+            element={
+              <PublicRoute restricted>
+                <Register />
+              </PublicRoute>
+            }
+          />
+          <Route
+            path="/login"
+            element={
+              <PublicRoute restricted>
+                <LogIn />
+              </PublicRoute>
+            }
+          />
+          <Route
+            path="/quiz"
+            element={
+              <PrivateRoute>
+                <QuizPage />
+              </PrivateRoute>
+            }
+          />
         </Route>
       </Routes>
     </div>
