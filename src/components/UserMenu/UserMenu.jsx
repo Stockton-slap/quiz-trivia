@@ -1,14 +1,14 @@
 import { useSelector } from "react-redux";
-import { selectUserName } from "../../redux/selectors";
+import { selectName } from "../../redux/selectors";
 
 import { UserMenuAvatar, UserMenuText, UserMenuBtn } from "./UserMenu.styled";
 
 const UserMenu = () => {
-  const username = useSelector(selectUserName);
+  const name = useSelector(selectName);
   return (
     <>
       <UserMenuAvatar src="#" alt="pic" />
-      <UserMenuText>Welcome, {username}!</UserMenuText>
+      <UserMenuText>Welcome, {name}!</UserMenuText>
       <UserMenuBtn type="button">LOGOUT</UserMenuBtn>
     </>
   );

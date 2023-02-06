@@ -11,15 +11,21 @@ import {
 import validate from "../baseFunc";
 import { useFormik } from "formik";
 
+import { useDispatch } from "react-redux";
+import { login } from "../../redux/authOperations";
+
 const LogInForm = () => {
+  const dispatch = useDispatch();
+
   const formik = useFormik({
     initialValues: {
-      username: "",
+      name: "",
       password: "",
     },
     validate,
     onSubmit: (values) => {
-      alert(JSON.stringify(values, null, 2));
+      console.log(values);
+      dispatch(login(values));
     },
   });
 
@@ -28,18 +34,16 @@ const LogInForm = () => {
       <FormTitle>Log in</FormTitle>
 
       <InfoWrapper>
-        <FormLabel htmlFor="username">Username</FormLabel>
-        {formik.touched.username ? (
-          <Error>{formik.errors.username}</Error>
-        ) : null}
+        <FormLabel htmlFor="name">Name</FormLabel>
+        {formik.touched.name ? <Error>{formik.errors.name}</Error> : null}
         <FormValue
-          id="username"
-          name="username"
+          id="name"
+          name="name"
           type="text"
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
-          value={formik.values.username}
-          placeholder="Enter your username"
+          value={formik.values.name}
+          placeholder="Enter your name"
         />
 
         <FormLabel htmlFor="password">Password</FormLabel>

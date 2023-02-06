@@ -19,7 +19,7 @@ const RegForm = () => {
 
   const formik = useFormik({
     initialValues: {
-      username: "",
+      name: "",
       email: "",
       password: "",
     },
@@ -34,18 +34,16 @@ const RegForm = () => {
       <FormTitle>Register</FormTitle>
 
       <InfoWrapper>
-        <FormLabel htmlFor="username">Username</FormLabel>
-        {formik.touched.username ? (
-          <Error>{formik.errors.username}</Error>
-        ) : null}
+        <FormLabel htmlFor="name">Name</FormLabel>
+        {formik.touched.name ? <Error>{formik.errors.name}</Error> : null}
         <FormValue
-          id="username"
-          name="username"
+          id="name"
+          name="name"
           type="text"
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
-          value={formik.values.username}
-          placeholder="Enter your username"
+          value={formik.values.name}
+          placeholder="Enter your name"
         />
 
         <FormLabel htmlFor="password">Password</FormLabel>

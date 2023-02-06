@@ -1,11 +1,10 @@
 const validate = (values) => {
   const errors = {};
 
-  if (!values.username) {
-    errors.username = "*Required";
-  } else if (values.username.length > 15 || values.username.length < 6) {
-    errors.username =
-      "*Must be not more than 15 and not less than 6 characters";
+  if (!values.name) {
+    errors.name = "*Required";
+  } else if (values.name.length > 15 || values.name.length < 6) {
+    errors.name = "*Must be not more than 15 and not less than 6 characters";
   }
 
   if (!values.email) {
