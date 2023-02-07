@@ -6,7 +6,7 @@ const theme = {
     decorColor: "#ff8604",
     errorColor: "#fb0000",
     inputBgc: "#eeecec",
-    mainTextColor: "#4e4e4e;",
+    quizColor: "#6900d2",
   },
   decorFont: "'Kalam', cursive",
   transition: "all 200ms ease-in-out 0s",

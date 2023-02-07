@@ -6,7 +6,7 @@ import {
   FormValue,
   FormBtn,
   Error,
-} from "../sharedStyles/sharedFormStyles.styled";
+} from "../../sharedStyles/sharedFormStyles.styled";
 
 import validate from "../baseFunc";
 import { useFormik } from "formik";

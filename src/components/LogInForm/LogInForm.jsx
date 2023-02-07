@@ -6,7 +6,7 @@ import {
   FormValue,
   FormBtn,
   Error,
-} from "../sharedStyles/sharedFormStyles.styled";
+} from "../../sharedStyles/sharedFormStyles.styled";
 
 import validate from "../baseFunc";
 import { useFormik } from "formik";
@@ -19,7 +19,7 @@ const LogInForm = () => {
 
   const formik = useFormik({
     initialValues: {
-      name: "",
+      email: "",
       password: "",
     },
     validate,
@@ -34,16 +34,16 @@ const LogInForm = () => {
       <FormTitle>Log in</FormTitle>
 
       <InfoWrapper>
-        <FormLabel htmlFor="name">Name</FormLabel>
-        {formik.touched.name ? <Error>{formik.errors.name}</Error> : null}
+        <FormLabel htmlFor="email">Email Address</FormLabel>
+        {formik.touched.email ? <Error>{formik.errors.email}</Error> : null}
         <FormValue
-          id="name"
-          name="name"
+          id="email"
+          name="email"
           type="text"
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
-          value={formik.values.name}
-          placeholder="Enter your name"
+          value={formik.values.email}
+          placeholder="Enter your email address"
         />
 
         <FormLabel htmlFor="password">Password</FormLabel>

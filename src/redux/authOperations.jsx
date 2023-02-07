@@ -22,8 +22,6 @@ export const register = createAsyncThunk(
 
       token.set(res.data.token);
 
-      console.log(res);
-
       return res.data;
     } catch (e) {
       return thunkAPI.rejectWithValue(e.message);
@@ -42,11 +40,23 @@ export const login = createAsyncThunk(
 
       token.set(res.data.token);
 
-      console.log(res);
-
       return res.data;
     } catch (e) {
       return thunkAPI.rejectWithValue(e.message);
     }
   }
 );
+
+export const logout = createAsyncThunk("auth/logout", async (_, thunkAPI) => {
+  try {
+    const res = await axios.post(
+      "https://connections-api.herokuapp.com/users/logout"
+    );
+
+    token.unset();
+
+    return res.data;
+  } catch (e) {
+    return thunkAPI.rejectWithValue(e.message);
+  }
+});

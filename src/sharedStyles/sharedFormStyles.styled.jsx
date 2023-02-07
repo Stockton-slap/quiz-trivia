@@ -28,7 +28,6 @@ export const FormLabel = styled.label`
   text-align: center;
   font-weight: 700;
   margin-bottom: 5px;
-  color: ${(props) => props.theme.colors.mainTextColor};
 
   &:not(:first-child) {
     margin-top: 20px;
@@ -41,7 +40,6 @@ export const FormValue = styled.input`
   box-shadow: 0 0 0 30px ${(props) => props.theme.colors.inputBgc} inset;
   height: 30px;
   padding-left: 10px;
-  -webkit-text-fill-color: ${(props) => props.theme.colors.mainTextColor};
 
   &:placeholder-shown {
     font-style: italic;

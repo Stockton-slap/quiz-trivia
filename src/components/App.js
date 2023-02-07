@@ -7,7 +7,7 @@ import Home from "../pages/Home";
 import img from "../images/quiz.png";
 import PublicRoute from "./PublicRoute/PublicRoute";
 import PrivateRoute from "./PrivateRoute/PrivateRoute";
-import QuizPage from "./QuizPage/QuizPage";
+import Quiz from "../pages/Quiz";
 
 function App() {
   return (
@@ -50,7 +50,7 @@ function App() {
             path="/quiz"
             element={
               <PrivateRoute>
-                <QuizPage />
+                <Quiz />
               </PrivateRoute>
             }
           />
