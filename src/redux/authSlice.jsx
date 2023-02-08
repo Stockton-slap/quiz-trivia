@@ -2,11 +2,14 @@ import { createSlice } from "@reduxjs/toolkit";
 
 import { register, login, logout } from "./authOperations";
 
+import { toast } from "react-toastify";
+
 const initialState = {
   user: { name: "", email: "", password: "" },
   token: null,
   isLoggedIn: false,
   isLoading: false,
+  isError: false,
   isRefreshing: false,
 };
 
@@ -21,27 +24,27 @@ const authSlice = createSlice({
       state.token = action.token;
       state.isLoggedIn = true;
     },
-    [register.pending](state, action) {
+    [register.pending](state) {
       state.isLoading = true;
     },
     [register.rejected](state, action) {
-      console.log(action);
+      state.isError = action.payload;
+      toast.error("Oops, something went wrong.");
     },
 
     [login.fulfilled](state, action) {
-      console.log(action);
-
       state.user.name = action.name;
       state.user.email = action.email;
       state.user.password = action.password;
       state.token = action.token;
       state.isLoggedIn = true;
     },
-    [login.pending](state, action) {
+    [login.pending](state) {
       state.isLoading = true;
     },
     [login.rejected](state, action) {
-      console.log(action);
+      state.isError = action.payload;
+      toast.error("Oops, something went wrong.");
     },
 
     [logout.fulfilled](state, action) {
@@ -51,8 +54,13 @@ const authSlice = createSlice({
       state.token = null;
       state.isLoggedIn = false;
     },
-    [logout.pending](state, action) {},
-    [logout.rejected](state, action) {},
+    [logout.pending](state) {
+      state.isLoading = true;
+    },
+    [logout.rejected](state, action) {
+      state.isError = action.payload;
+      toast.error("Oops, something went wrong.");
+    },
   },
 });
 

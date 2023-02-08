@@ -1,57 +1,80 @@
-import { useState } from "react";
-import { useSelector } from "react-redux";
+import { useMemo, useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+
 import { selectCurrentQuestion } from "../../redux/selectors";
+import { selectQuestions } from "../../redux/selectors";
+import { getNextQuestion } from "../../redux/quizSlice";
+
 import {
   List,
   QuestionText,
   AnswersContainer,
-  IncorrectAnswerBtn,
-  CorrectAnswerBtn,
+  Answer,
   NextQuestionBtn,
   WrongResultText,
   CorrectResultText,
 } from "./QuestionList.styled";
 
+import arrayShuffle from "array-shuffle";
+
 const QuestionList = () => {
-  const currentQuestion = useSelector(selectCurrentQuestion);
+  const currentQuestionIndex = useSelector(selectCurrentQuestion);
+  const questions = useSelector(selectQuestions);
+
+  const dispatch = useDispatch();
+
   const [isAnswered, setIsAnswered] = useState(false);
   const [isWrong, setIsWrong] = useState(false);
 
-  const { question, incorrectAnswers, correctAnswer } = currentQuestion;
+  const separateQuestion = questions[currentQuestionIndex];
+
+  const { question, incorrectAnswers, correctAnswer } = separateQuestion;
+
+  const memoizedAnswers = useMemo(() => {
+    const allAnswers = [...incorrectAnswers, correctAnswer];
+
+    const shuffledAnswers = arrayShuffle(allAnswers);
+    return shuffledAnswers;
+  }, [correctAnswer, incorrectAnswers]);
+
+  const handleAnswersClick = (e) => {
+    if (e.target.textContent === correctAnswer) {
+      setIsWrong(false);
+    } else {
+      setIsWrong(true);
+    }
+
+    setIsAnswered(true);
+  };
+
+  const handleNextBtnClick = () => {
+    dispatch(getNextQuestion());
+    setIsAnswered(false);
+  };
 
   return (
     <List>
       <QuestionText>{question}</QuestionText>
       <AnswersContainer>
-        {incorrectAnswers.map((answer, i) => {
+        {memoizedAnswers.map((answer, i) => {
           return (
-            <IncorrectAnswerBtn
+            <Answer
               key={i}
               type="button"
-              onClick={() => {
-                setIsAnswered(true);
-                setIsWrong(true);
-              }}
+              onClick={handleAnswersClick}
+              disabled={isAnswered}
             >
               {answer}
-            </IncorrectAnswerBtn>
+            </Answer>
           );
         })}
-
-        <CorrectAnswerBtn
-          type="button"
-          onClick={() => {
-            setIsAnswered(true);
-            setIsWrong(false);
-          }}
-        >
-          {correctAnswer}
-        </CorrectAnswerBtn>
       </AnswersContainer>
 
       {isAnswered && (
         <>
-          <NextQuestionBtn>Next question</NextQuestionBtn>
+          <NextQuestionBtn type="button" onClick={handleNextBtnClick}>
+            Next question
+          </NextQuestionBtn>
           {isWrong ? (
             <WrongResultText>Wrong answer</WrongResultText>
           ) : (

@@ -8,6 +8,7 @@ import img from "../images/quiz.png";
 import PublicRoute from "./PublicRoute/PublicRoute";
 import PrivateRoute from "./PrivateRoute/PrivateRoute";
 import Quiz from "../pages/Quiz";
+import Toaster from "./Toaster/Toaster";
 
 function App() {
   return (
@@ -24,7 +25,7 @@ function App() {
           <Route
             index
             element={
-              <PublicRoute>
+              <PublicRoute restricted>
                 <Home />
               </PublicRoute>
             }
@@ -56,6 +57,7 @@ function App() {
           />
         </Route>
       </Routes>
+      <Toaster />
     </div>
   );
 }

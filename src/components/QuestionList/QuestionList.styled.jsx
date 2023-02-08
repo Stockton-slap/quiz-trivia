@@ -25,9 +25,7 @@ export const AnswersContainer = styled.div`
   align-items: center;
 `;
 
-export const IncorrectAnswerBtn = styled.button``;
-
-export const CorrectAnswerBtn = styled.button``;
+export const Answer = styled.button``;
 
 export const NextQuestionBtn = styled.button`
   position: absolute;
