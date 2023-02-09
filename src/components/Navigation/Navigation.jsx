@@ -19,7 +19,9 @@ const Navigation = () => {
 
         {isLoggedIn ? (
           <>
-            <Link to="/quiz">Quiz</Link>
+            <Link to="/quiz" style={{ display: "none" }}>
+              Quiz
+            </Link>
             <UserMenu />
           </>
         ) : (

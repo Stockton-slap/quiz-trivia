@@ -2,7 +2,14 @@ import { useSelector, useDispatch } from "react-redux";
 import { selectName } from "../../redux/selectors";
 import { logout } from "../../redux/authOperations";
 
-import { UserMenuAvatar, UserMenuText, UserMenuBtn } from "./UserMenu.styled";
+import {
+  UserMenuContainer,
+  UserMenuAvatar,
+  UserMenuText,
+  UserMenuBtn,
+} from "./UserMenu.styled";
+
+import avatar from "./../../images/avatar.png";
 
 const UserMenu = () => {
   const dispatch = useDispatch();
@@ -12,14 +19,15 @@ const UserMenu = () => {
   };
 
   const name = useSelector(selectName);
+
   return (
-    <>
-      <UserMenuAvatar src="#" alt="pic" />
+    <UserMenuContainer>
+      <UserMenuAvatar src={avatar} alt="avatar" />
       <UserMenuText>Welcome, {name}!</UserMenuText>
       <UserMenuBtn type="button" onClick={handleClick}>
         LOGOUT
       </UserMenuBtn>
-    </>
+    </UserMenuContainer>
   );
 };
 
