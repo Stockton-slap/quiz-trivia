@@ -9,6 +9,7 @@ import PublicRoute from "./PublicRoute/PublicRoute";
 import PrivateRoute from "./PrivateRoute/PrivateRoute";
 import Quiz from "../pages/Quiz";
 import Toaster from "./Toaster/Toaster";
+import { HashRouter as Router } from "react-router-dom";
 
 function App() {
   return (
@@ -20,43 +21,45 @@ function App() {
         backgroundSize: "cover",
       }}
     >
-      <Routes>
-        <Route path="/" element={<SharedLayout />}>
-          <Route
-            index
-            element={
-              <PublicRoute restricted>
-                <Home />
-              </PublicRoute>
-            }
-          />
+      <Router>
+        <Routes>
+          <Route path="/" element={<SharedLayout />}>
+            <Route
+              index
+              element={
+                <PublicRoute restricted>
+                  <Home />
+                </PublicRoute>
+              }
+            />
 
-          <Route
-            path="/register"
-            element={
-              <PublicRoute restricted>
-                <Register />
-              </PublicRoute>
-            }
-          />
-          <Route
-            path="/login"
-            element={
-              <PublicRoute restricted>
-                <LogIn />
-              </PublicRoute>
-            }
-          />
-          <Route
-            path="/quiz"
-            element={
-              <PrivateRoute>
-                <Quiz />
-              </PrivateRoute>
-            }
-          />
-        </Route>
-      </Routes>
+            <Route
+              path="/register"
+              element={
+                <PublicRoute restricted>
+                  <Register />
+                </PublicRoute>
+              }
+            />
+            <Route
+              path="/login"
+              element={
+                <PublicRoute restricted>
+                  <LogIn />
+                </PublicRoute>
+              }
+            />
+            <Route
+              path="/quiz"
+              element={
+                <PrivateRoute>
+                  <Quiz />
+                </PrivateRoute>
+              }
+            />
+          </Route>
+        </Routes>
+      </Router>
       <Toaster />
     </div>
   );
