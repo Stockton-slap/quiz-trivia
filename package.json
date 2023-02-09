@@ -1,6 +1,6 @@
 {
   "name": "quiz-trivia",
-  "homepage": "https://github.com/Stockton-slap/quiz-trivia.git",
+  "homepage": "https://stockton-slap.github.io/quiz-trivia/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
