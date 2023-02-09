@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/Stockton-slap/quiz-trivia.git/static/css/main.db1a02fa.css",
+    "main.js": "/Stockton-slap/quiz-trivia.git/static/js/main.f0752fea.js",
+    "static/media/avatar.png": "/Stockton-slap/quiz-trivia.git/static/media/avatar.15972a7ef2ce6ae07ce3.png",
+    "static/media/giamatti.png": "/Stockton-slap/quiz-trivia.git/static/media/giamatti.f6f990e570a230ce6a0d.png",
+    "static/media/quiz.png": "/Stockton-slap/quiz-trivia.git/static/media/quiz.cac7e58ba74164946113.png",
+    "index.html": "/Stockton-slap/quiz-trivia.git/index.html",
+    "main.db1a02fa.css.map": "/Stockton-slap/quiz-trivia.git/static/css/main.db1a02fa.css.map",
+    "main.f0752fea.js.map": "/Stockton-slap/quiz-trivia.git/static/js/main.f0752fea.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.db1a02fa.css",
+    "static/js/main.f0752fea.js"
+  ]
+}
