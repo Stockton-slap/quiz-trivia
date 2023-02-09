@@ -2,10 +2,9 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 import App from "./components/App";
-// import { BrowserRouter } from "react-router-dom";
+import { BrowserRouter } from "react-router-dom";
 import Theme from "./components/Theme/Theme";
 import { Provider } from "react-redux";
-import { HashRouter as Router } from "react-router-dom";
 import { PersistGate } from "redux-persist/integration/react";
 import store, { persistor } from "./redux/store";
 
@@ -14,11 +13,11 @@ root.render(
   <React.StrictMode>
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
-        <Router>
+        <BrowserRouter basename="quiz-trivia">
           <Theme>
             <App />
           </Theme>
-        </Router>
+        </BrowserRouter>
       </PersistGate>
     </Provider>
   </React.StrictMode>
