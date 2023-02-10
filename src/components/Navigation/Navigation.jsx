@@ -1,11 +1,12 @@
 import { Nav } from "./Navigation.styled";
-import { Link } from "react-router-dom";
 
 import { useSelector } from "react-redux";
 
 import Logo from "../Logo/Logo";
 import AuthNav from "../AuthNav/AuthNav";
 import UserMenu from "../UserMenu/UserMenu";
+
+import { StyledNavLink } from "./Navigation.styled";
 
 import { selectIsLoggedIn } from "../../redux/selectors";
 
@@ -19,9 +20,7 @@ const Navigation = () => {
 
         {isLoggedIn ? (
           <>
-            <Link to="/quiz" style={{ display: "none" }}>
-              Quiz
-            </Link>
+            <StyledNavLink to="/quiz">Quiz</StyledNavLink>
             <UserMenu />
           </>
         ) : (

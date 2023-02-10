@@ -9,8 +9,13 @@ import PublicRoute from "./PublicRoute/PublicRoute";
 import PrivateRoute from "./PrivateRoute/PrivateRoute";
 import Quiz from "../pages/Quiz";
 import Toaster from "./Toaster/Toaster";
+import { selectIsLoggedIn } from "../redux/selectors";
+import { useSelector } from "react-redux";
+import Statistics from "./Statistics/Statistics";
 
 function App() {
+  const isLoggedIn = useSelector(selectIsLoggedIn);
+
   return (
     <div
       style={{
@@ -25,8 +30,8 @@ function App() {
           <Route
             index
             element={
-              <PublicRoute restricted>
-                <Home />
+              <PublicRoute>
+                {isLoggedIn ? <Statistics /> : <Home />}
               </PublicRoute>
             }
           />
